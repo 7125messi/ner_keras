@@ -1,7 +1,7 @@
 from keras.models import Sequential
 from keras.layers import Embedding, Bidirectional, LSTM
 from keras_contrib.layers import CRF
-from keras.utils import plot_model
+# from keras.utils import plot_model
 import process_data
 import pickle
 
@@ -21,7 +21,7 @@ def create_model(train=True):
     crf = CRF(len(chunk_tags), sparse_target=True)
     model.add(crf)
     model.summary()
-    plot_model(model,to_file='../model/model.png')
+    # plot_model(model,to_file='../model/model.png')
     model.compile('adam', loss=crf.loss_function, metrics=[crf.accuracy])
     if train:
         return model, (train_x, train_y), (test_x, test_y)
